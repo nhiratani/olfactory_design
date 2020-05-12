@@ -1,5 +1,5 @@
 #
-# Three-layred feedforward model of invertebrate olfaction
+# Three-layred feedforward model of olfactory systems
 #
 # A model with single output unit
 #
@@ -11,20 +11,11 @@
 # wo : Normalized Gaussian
 # Jr : Normalized Gaussian
 #
-import os
-os.environ["MKL_NUM_THREADS"] = '4'
-os.environ["NUMEXPR_NUM_THREADS"] = '4'
-os.environ["OMP_NUM_THREADS"] = '4'
 from math import *
 import sys
 import numpy as np
 from numpy import random as nrnd
 from numpy import linalg as nlg
-#from scipy import integrate as scint
-#from scipy import special as scisp
-#from scipy import stats as scist 
-#import matplotlib.pyplot as plt
-#from pylab import cm
 
 Pi = 3.14159265
 epsilon = 0.00000001
@@ -71,11 +62,11 @@ def simul(Lx, N, sigmat2, sigmaR2, ik):
 
 if __name__ == "__main__":
     param = sys.argv
-    Lx = int(param[1])
-    N = int(param[2])
-    sigmat2 = float(param[3])
-    sigmaR2 = float(param[4])
-    ik = int(param[5])
+    Lx = int(param[1]) #Input layer size
+    N = int(param[2]) #The number of training samples
+    sigmat2 = float(param[3]) #Teacher noise amplitude 
+    sigmaR2 = float(param[4]) #Initial amplitude of the output weights
+    ik = int(param[5]) #Simulation id
 
     simul(Lx, N, sigmat2, sigmaR2, ik)
 
