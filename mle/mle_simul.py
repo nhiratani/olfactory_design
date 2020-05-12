@@ -72,7 +72,7 @@ def calc_ers(Jo, wo, Jr, N, sigmat2):
     return eapr, eest, egen, etest
     
 def simul(Lx, N, sigmat2, ik):
-    festr = 'data/ml_simul_Lx' + str(Lx) + '_N' + str(N) + '_st' + str(sigmat2) + '_ik' + str(ik) + '.txt'
+    festr = 'data/mle_simul_Lx' + str(Lx) + '_N' + str(N) + '_st' + str(sigmat2) + '_ik' + str(ik) + '.txt'
     fwe = open(festr,'w')
 
     Lhs = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 33, 36, 39, 42, 46, 50, 55, 60, 66, 72, 79, 86, 94, 103, 113, 124, 136, 149, 163, 179, 196, 215, 236, 259, 284, 312, 343, 377, 414, 455, 500, 550, 605, 665, 731, 804, 884, 972, 1069, 1175, 1292, 1421, 1563, 1719, 1890, 2079, 2286, 2514, 2765, 3041, 3345, 3679, 4046, 4450, 4895, 5384, 5922, 6514, 7165, 7881, 8669, 9535, 10488, 11536, 12689, 13957, 15352, 16887, 18575, 20432, 22475, 24722, 27194]#, 29913]#, 32904, 36194, 39813, 43794, 48173]
@@ -90,10 +90,10 @@ def simul(Lx, N, sigmat2, ik):
 
 if __name__ == "__main__":
     param = sys.argv
-    Lx = int(param[1])
-    N = int(param[2])
-    sigmat2 = float(param[3])
-    ik = int(param[4])
+    Lx = int(param[1]) #Input layer size
+    N = int(param[2]) #Number of samples
+    sigmat2 = float(param[3]) #teacher noise amplitude
+    ik = int(param[4]) #simulation id
 
     simul(Lx, N, sigmat2, ik)
 
