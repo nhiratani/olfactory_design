@@ -10,18 +10,11 @@
 # Jr : Normalized Gaussian
 # wr : Maximum likelihood
 #
-import os
-os.environ["MKL_NUM_THREADS"] = '8'
-os.environ["NUMEXPR_NUM_THREADS"] = '8'
-os.environ["OMP_NUM_THREADS"] = '8'
 from math import *
 import sys
 import numpy as np
 from numpy import random as nrnd
 from numpy import linalg as nlg
-#from scipy import integrate as scint
-#from scipy import special as scisp
-#from scipy import stats as scist 
 
 Pi = 3.14159265
 epsilon = 0.00000001
