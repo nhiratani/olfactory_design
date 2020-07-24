@@ -12,10 +12,10 @@
 # Jo : normarlized Gaussian
 # wo : normarlized Gaussian
 #
-import os
-os.environ["MKL_NUM_THREADS"] = '4'
-os.environ["NUMEXPR_NUM_THREADS"] = '4'
-os.environ["OMP_NUM_THREADS"] = '4'
+#import os
+#os.environ["MKL_NUM_THREADS"] = '4'
+#os.environ["NUMEXPR_NUM_THREADS"] = '4'
+#os.environ["OMP_NUM_THREADS"] = '4'
 from math import *
 import sys
 import numpy as np
@@ -26,7 +26,7 @@ Pi = 3.14159265
 epsilon = 0.00000001
 
 Lo = 500
-Tmax = 100000#
+Tmax = 100000
 B = Lo
 
 #Rectifier
@@ -62,7 +62,7 @@ def calc_er(Jo, wo, Jp, sigmap1):
 
     GpinvGpowo = nlg.solve(Gp, np.dot(Gpo,wo)); Gp = None
     sigmap2 = np.dot(wo, np.dot(Gop, GpinvGpowo))
-    Cop = None; Pop = None; Gop = None; Gpo = None; Gpo_zero = None; #GpinvGpowo = None
+    Cop = None; Pop = None; Gop = None; Gpo = None; Gpo_zero = None; 
     return sigmap1-sigmap2, GpinvGpowo
 
 def calc_dJp(Jo, wo, Jp, wp):
@@ -146,6 +146,7 @@ def simul(Lx, N, eta_dJ, sigmat2, G, sbit, ik):
     er_new, wp = calc_er(Jo, wo, Jp, sigmap1); er_old = 0.0
     fwetmp = ""
 
+    #Evolutionary learning
     for t in range(Tmax):
         er_old = er_new
         dJ = eta_dJ*er_new
@@ -156,7 +157,8 @@ def simul(Lx, N, eta_dJ, sigmat2, G, sbit, ik):
         if t%100 == 0:
             fwp.write( str(t) + " " + str(er_new) + "\n" );
             fwp.flush()
-
+    
+    #Developmental learning
     JpK, wpK = calc_JwpK_noise(Jp, wp, sbit)
     for lhidx in range(len(Lhs)):
         Lh = Lhs[lhidx]
@@ -166,13 +168,13 @@ def simul(Lx, N, eta_dJ, sigmat2, G, sbit, ik):
 
 if __name__ == "__main__":
     param = sys.argv
-    Lx = int(param[1])
-    N = int(param[2])
-    eta_dJ = float(param[3])
-    sigmat2 = float(param[4])
-    G = float(param[5])
-    sbit = float(param[6])
-    ik = int(param[7])
+    Lx = int(param[1]) #Input layer size
+    N = int(param[2]) #The number of training samples
+    eta_dJ = float(param[3]) #Learning rate of Jp learning
+    sigmat2 = float(param[4]) #teacher noise
+    G = float(param[5]) #Genetic budget
+    sbit = float(param[6]) #Bit per synapse
+    ik = int(param[7]) #simulation id
     
     simul(Lx, N, eta_dJ, sigmat2, G, sbit, ik)
 
