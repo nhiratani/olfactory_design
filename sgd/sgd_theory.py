@@ -59,7 +59,7 @@ def calc_lms(h,x):
 def calc_bs(st2, sr2):
     b2 = ds/( 0.5*sr2 - (ds+st2) )
     b1 = 2*(ds + Css2)/( 0.5*sr2 - (ds + Css2 + st2) )
-    b0_numer = 2*(0.5 - Css0) + (0.5 - Css0 + st2)*(1.0 - 2.0*Css0)
+    b0_numer = 2*(ds + Css1 + Css2)
     b0_denom = 0.5*sr2 - (0.5 - Css0 + st2)
     return b2, b1, b0_numer/b0_denom
 
