@@ -1,5 +1,10 @@
 # olfactory_design
-Source codes associated with the olfactory circuit design project.
+Source codes associated with the preprint: 
+> Developmental and evolutionary constraints on olfactory circuit selection
+> Naoki Hiratani and Peter E Latham
+> Gatsby Computational Neuroscience Unit, University College London
+
+Questions on the manuscript and the codes should be addressed to Naoki Hiratani (N.Hiratani@gmail.com).
 
 Directory “mle” corresponds to the results under the maximum likelihood estimation depicted in Figures 3 and 4. 
 * mle_theory.py and mle_simul.py generate the theoretical and simulation results depicted in Figure 3 and Figure 4A-C.
