@@ -1,8 +1,10 @@
 # olfactory_design
 Source codes associated with the preprint: 
-> Developmental and evolutionary constraints on olfactory circuit selection
-> Naoki Hiratani and Peter E Latham
-> Gatsby Computational Neuroscience Unit, University College London
+```
+Developmental and evolutionary constraints on olfactory circuit selection
+Naoki Hiratani and Peter E Latham
+Gatsby Computational Neuroscience Unit, University College London
+```
 
 Questions on the manuscript and the codes should be addressed to Naoki Hiratani (N.Hiratani@gmail.com).
 
