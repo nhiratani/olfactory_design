@@ -1,4 +1,4 @@
-# olfactory_design
+# olfactory circuit selection
 Source codes associated with the preprint: 
 ```
 Developmental and evolutionary constraints on olfactory circuit selection
