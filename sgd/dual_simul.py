@@ -27,7 +27,7 @@ epsilon = 0.00000001
 
 Lo = 500
 Tmax = 100000
-B = Lo
+B = 2000
 
 #Rectifier
 def calc_Prf(Ctmp, La, Lb):
@@ -143,14 +143,10 @@ def simul(Lx, N, eta_dJ, sigmat2, G, sbit, ik):
     Jp = nrnd.normal(0, 1.0, (Lp, Lx))/sqrt(float(Lx))
     wp = np.zeros((Lp)); wptmp = np.zeros((Lp))
 
-    er_new, wp = calc_er(Jo, wo, Jp, sigmap1); er_old = 0.0
-    fwetmp = ""
-
     #Evolutionary learning
+    er_new, wp = calc_er(Jo, wo, Jp, sigmap1); er_old = 0.0
     for t in range(Tmax):
-        er_old = er_new
-        dJ = eta_dJ*er_new
-        Jptmp = Jp + dJ*calc_dJp(Jo, wo, Jp, wp)
+        Jptmp = Jp + eta_dJ*calc_dJp(Jo, wo, Jp, wp)
         er_new, wptmp = calc_er(Jo, wo, Jptmp, sigmap1)
         
         Jp = Jptmp; wp = wptmp
